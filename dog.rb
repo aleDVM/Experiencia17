@@ -11,12 +11,10 @@ class Dog
   def initialize(propiedades)
     @propiedades = propiedades
   end
+
   def ladrar
-    print @propiedades.first
-     @propiedades.each do |k, v|
-       print k
-     end
-  end
+     print "#{@propiedades[:nombre]} esta ladrando"
+   end
 end
 propiedades = { nombre: 'Beethoven', raza: 'San Bernardo', color: 'Cafe' }
 
