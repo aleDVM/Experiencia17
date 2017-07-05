@@ -9,6 +9,7 @@
 #Generar un método que permita calcular el promedio de precio por producto.
 
 class Product
+  attr_reader :name
   def initialize(name, *prices)
     @name = name
     @prices = prices.map(&:to_i)
@@ -28,7 +29,7 @@ data.each do |prod|
   products_list << Product.new(*ls)
 end
 products_list.each do |product|
-  print product.average
+  print "El promedio del precio del producto #{product.name} es #{product.average}"
   puts
 end
 
@@ -36,3 +37,14 @@ puts products_list
 
 # La tienda desea generar un nuevo catalogo que no incluya el ultimo precio
 # correspondiente a cada producto debido a que ya no comercializa productos de talla XS.
+
+file = File.open('nuevo_catalogo.txt', 'w')
+new_products = []
+data.each do |product|
+  ls = product.split(', ')
+   ls.delete(ls[-1])
+   file.print "#{ls}"
+   file.puts
+
+end
+file.close
